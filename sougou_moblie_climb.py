@@ -23,7 +23,7 @@ class SouGouMoblieClimb:
                 'Accept': 'text/html, application/xhtml+xml, */*',
                 'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
-                'User-Agent': 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+                'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1'
         }
 
         httpRsp = requests.get("https://www.sogou.com/web?query={}".format(key), headers=headersParameters)
@@ -35,7 +35,8 @@ class SouGouMoblieClimb:
             if key =='英荔':
                 soup = BeautifulSoup(httpRsp.text, "lxml")
                 results = soup.select(".vrwrap")
-                for index in range(len(results)-6):
+                print(len(results))
+                for index in range(len(results)-7):
                     # 获取标题所在的a标签
                     #print(results[index])
                     aTag = results[index].select("h3 a")[0]
@@ -55,6 +56,7 @@ class SouGouMoblieClimb:
                         })
                 #print(resultArr)
                 results = soup.select(".rb")
+                print(len(results))
                 for index in range(len(results)):
                     # 获取标题所在的a标签
                     # print(results[index])
@@ -66,6 +68,27 @@ class SouGouMoblieClimb:
                     href = aTag.attrs["href"]
                     sessions = requests.session()
                     sessions.headers['User-Agent'] = 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+                    r = sessions.get('https://www.sogou.com' + href)
+                    href = r.url
+                    print(href)
+                    resultArr.append({
+                        "title": title,
+                        "href": href,
+                    })
+                results = soup.select(".vrwrap")
+                print(len(results))
+                for index in range(3, 3):
+                    # 获取标题所在的a标签
+                    # print(results[index])
+                    aTag = results[index].select("h3 a")[0]
+                    # 获取标题的文本
+                    title = aTag.get_text()
+                    print(title)
+                    # 获取网页的真实URL
+                    href = aTag.attrs["href"]
+                    sessions = requests.session()
+                    sessions.headers[
+                        'User-Agent'] = 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
                     r = sessions.get('https://www.sogou.com' + href)
                     href = r.url
                     print(href)
@@ -249,5 +272,5 @@ class SouGouMoblieClimb:
 
 
 if __name__ == '__main__':
-    #SouGouMoblieClimb().climb_sougou_moblie('英荔商学院')
+    #SouGouMoblieClimb().climb_sougou_moblie('英荔')
     SouGouMoblieClimb().write()

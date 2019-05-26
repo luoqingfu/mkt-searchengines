@@ -21,7 +21,7 @@ class BingClimb:
                 'Accept': 'text/html, application/xhtml+xml, */*',
                 'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
-                'User-Agent': 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
         }
 
         httpRsp = requests.get("https://cn.bing.com/search?q={}".format(key), headers=headersParameters)
@@ -29,6 +29,7 @@ class BingClimb:
             print("数据获取失败")
         else:
             soup = BeautifulSoup(httpRsp.text, "lxml")
+            print(soup)
             results = soup.select(".b_algo")
             print(results)
             # 用于保存提取的数据
@@ -76,5 +77,5 @@ class BingClimb:
 
 
 if __name__ == '__main__':
-    BingClimb().climb_bing('英荔商学院')
-    #BingClimb().write()
+    #BingClimb().climb_bing('英荔商学院')
+    BingClimb().write()

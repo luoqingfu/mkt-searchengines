@@ -23,7 +23,7 @@ class SouGouClimb:
                 'Accept': 'text/html, application/xhtml+xml, */*',
                 'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
-                'User-Agent': 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
         }
 
         httpRsp = requests.get("https://www.sogou.com/web?query={}".format(key), headers=headersParameters)
@@ -249,5 +249,5 @@ class SouGouClimb:
 
 
 if __name__ == '__main__':
-    #SouGouClimb().climb_sougou('英荔商学院')
+    #SouGouClimb().climb_sougou('英荔教育')
     SouGouClimb().write()

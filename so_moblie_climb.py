@@ -21,7 +21,7 @@ class SoClimbMoblie:
             'Accept': 'text/html, application/xhtml+xml, */*',
             'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
             'Accept-Encoding': 'gzip, deflate',
-            'User-Agent': 'Mozilla/5.0 (iPad; U; CPU OS 3_2_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B500 Safari/531.21.1'
+            'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1'
         }
 
         httpRsp = requests.get("https://www.so.com/s?ie=utf-8&fr=none&src=sug-local&q={}".format(key), headers=headersParameters)
