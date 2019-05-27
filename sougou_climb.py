@@ -164,8 +164,8 @@ class SouGouClimb:
             if key == '英荔商学院':
                 soup = BeautifulSoup(httpRsp.text, "lxml")
                 results = soup.select(".rb")
-                #print(len(results))
-                for index in range(len(results) - 5):
+                print(len(results),'rbrbrbrrbrbrbrbrrbrbrbrb')
+                for index in range(len(results) - 4):
                     # 获取标题所在的a标签
                     # print(results[index])
                     aTag = results[index].select("h3 a")[0]
@@ -187,7 +187,7 @@ class SouGouClimb:
                     })
                 results = soup.select(".vrwrap")
                 print(len(results))
-                for index in range(len(results) - 5):
+                for index in range(len(results) - 6):
                     # 获取标题所在的a标签
                     # print(results[index])
                     aTag = results[index].select("h3 a")[0]
@@ -206,8 +206,9 @@ class SouGouClimb:
                         "title": title,
                         "href": href,
                     })
-                for index in range(3, 5):
+                for index in range(3, 4):
                     # 获取标题所在的a标签
+                    #需修改
                     # print(results[index])
                     aTag = results[index].select("h3 a")[0]
                     # 获取标题的文本
@@ -249,5 +250,5 @@ class SouGouClimb:
 
 
 if __name__ == '__main__':
-    #SouGouClimb().climb_sougou('英荔教育')
+    #SouGouClimb().climb_sougou('英荔商学院')
     SouGouClimb().write()
