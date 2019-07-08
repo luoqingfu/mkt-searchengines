@@ -45,8 +45,8 @@ class SoClimb:
                 print(href)
                 sessions = requests.session()
                 sessions.headers['User-Agent'] = 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
-                r = sessions.get(href)
-                href = r.url
+                # r = sessions.get(href)
+                # href = r.url
                 resultArr.append({
                     "title": title,
                     "href": href,

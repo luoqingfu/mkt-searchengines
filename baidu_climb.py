@@ -31,7 +31,7 @@ class BaiduClimb:
             soup = BeautifulSoup(httpRsp.text, "lxml")
             if key != '英荔教育':
                 results = soup.select(".c-container ")
-                #print(results)
+                print(results)
                 # 用于保存提取的数据
                 resultArr = []
                 for index in range(len(results)-5):
@@ -77,8 +77,8 @@ class BaiduClimb:
                             "href": href,
                         })
                     if index == 1:
-                        #print(results[index+1])
-                        aTag = results[index+1].select("h3 a")[0]
+                        print(results[index+1])
+                        aTag = results[index+1].select("div>a")[0]
                         # 获取标题的文本
                         title = aTag.get_text()
                         print(title)
@@ -174,5 +174,5 @@ class BaiduClimb:
 
 
 if __name__ == '__main__':
-    #BaiduClimb().climb_baidu(search_key)
-    BaiduClimb().write()
+    BaiduClimb().climb_baidu('英荔教育')
+    #BaiduClimb().write()

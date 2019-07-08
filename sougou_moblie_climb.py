@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 from function import Excel
 
-search_key = ['英荔', '英荔教育', '英荔商学院']
+search_key = ['英荔', '英荔商学院']
 class SouGouMoblieClimb:
     def get_excel_data(self, dataname, row=2):
         data = Excel(dataname)
@@ -229,27 +229,27 @@ class SouGouMoblieClimb:
                         "title": title,
                         "href": href,
                     })
-                for index in range(3, 4):
-                    # 获取标题所在的a标签
-                    #需修改
-                    # print(results[index])
-                    aTag = results[index].select("h3 a")[0]
-                    # 获取标题的文本
-                    title = aTag.get_text()
-                    print(title)
-                    # 获取网页的真实URL
-                    href = aTag.attrs["href"]
-                    sessions = requests.session()
-                    # sessions.headers[
-                    #     'User-Agent'] = 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
-                    # r = sessions.get('https://www.sogou.com' + href)
-                    # href = r.url
-                    print(href)
-                    resultArr.append({
-                        "title": title,
-                        "href": href,
-                    })
-                return resultArr
+                # for index in range(5, 6):
+                #     # 获取标题所在的a标签
+                #     #需修改
+                #     # print(results[index])
+                #     aTag = results[index].select("h3 a")[0]
+                #     # 获取标题的文本
+                #     title = aTag.get_text()
+                #     print(title)
+                #     # 获取网页的真实URL
+                #     href = aTag.attrs["href"]
+                #     sessions = requests.session()
+                #     # sessions.headers[
+                #     #     'User-Agent'] = 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+                #     # r = sessions.get('https://www.sogou.com' + href)
+                #     # href = r.url
+                #     print(href)
+                #     resultArr.append({
+                #         "title": title,
+                #         "href": href,
+                #     })
+                # return resultArr
 
 
     def write(self):
@@ -273,5 +273,5 @@ class SouGouMoblieClimb:
 
 
 if __name__ == '__main__':
-    SouGouMoblieClimb().climb_sougou_moblie('英荔商学院')
-    #SouGouMoblieClimb().write()
+    #SouGouMoblieClimb().climb_sougou_moblie('英荔')
+    SouGouMoblieClimb().write()

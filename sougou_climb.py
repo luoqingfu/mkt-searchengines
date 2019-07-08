@@ -35,7 +35,7 @@ class SouGouClimb:
             if key =='英荔':
                 soup = BeautifulSoup(httpRsp.text, "lxml")
                 results = soup.select(".vrwrap")
-                for index in range(len(results)-6):
+                for index in range(len(results)-8):
                     # 获取标题所在的a标签
                     #print(results[index])
                     aTag = results[index].select("h3 a")[0]
